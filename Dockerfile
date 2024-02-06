@@ -31,10 +31,19 @@ RUN git clone https://github.com/EdwinWenink/.dotfiles ~/.dotfiles
 RUN git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 RUN cd ~/.dotfiles/ && stow tmux
 
+# Configure Git
+RUN git config --global user.name "Edwin Wenink"
+RUN git config --global user.email "edwinwenink@hotmail.com"
+RUN git config --global credential.helper 'store --file ~/.my-credentials'
+
+# Install Vim plugins
+RUN vim +PlugInstall +qall
+
 COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
 
 # RUN pip install pynvim
+# TODO run :PlugInstall within Vim
 
 RUN wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh || true
 RUN git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
