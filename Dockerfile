@@ -43,7 +43,6 @@ COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
 
 # RUN pip install pynvim
-# TODO run :PlugInstall within Vim
 
 RUN wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh || true
 RUN git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
@@ -52,8 +51,8 @@ ENV ZSH_THEME agnoster
 COPY zshrc .zshrc
 
 USER root
-WORKDIR /root
-VOLUME ["/home/devpc"]
+WORKDIR /home/edwin
+VOLUME ["/home/edwin"]
 
 EXPOSE 5173
 
