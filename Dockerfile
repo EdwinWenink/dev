@@ -51,8 +51,8 @@ ENV ZSH_THEME agnoster
 COPY zshrc .zshrc
 
 USER root
-WORKDIR /home/edwin
-VOLUME ["/home/edwin"]
+WORKDIR /root/dev
+VOLUME ["/root/dev"]
 
 EXPOSE 5173
 
