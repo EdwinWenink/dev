@@ -1,5 +1,7 @@
 # Dev Container
 
+## Usage
+
 Manually:
 
 `docker build -t devcontainer .`
@@ -18,4 +20,7 @@ Clean up:
 
 `docker-compose down`
 
-TODO: mounting a volume
+## TODO
+
+- Volume vs mount bind
+- Publish image?
