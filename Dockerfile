@@ -67,12 +67,10 @@ COPY requirements.txt ./
 RUN pip3 install --no-cache-dir -r requirements.txt
 
 # Personalized ZSH
-RUN wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh || true
+RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+RUN rm ~/.zshrc
 RUN git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-RUN git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
-ENV ZSH_THEME agnoster
-# Or: RUN cd ~/.dotfiles/ && stow zsh
-COPY zshrc .zshrc
+RUN cd ~/.dotfiles/ && stow zsh
 
 # Pre-commit config
 COPY .pre-commit-config.yaml .pre-commit-config.yaml
