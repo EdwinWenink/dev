@@ -35,10 +35,3 @@ WARNING: because bind mounts are specific to a particular file system this setup
 Instead, it used a simple volume managed by Docker.
 
 You need to run this from within this repository.
-
-
-
-## TODO
-
-- Volume vs mount bind
-- Publish image?
