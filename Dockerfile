@@ -74,6 +74,9 @@ ENV ZSH_THEME agnoster
 # Or: RUN cd ~/.dotfiles/ && stow zsh
 COPY zshrc .zshrc
 
+# Pre-commit config
+COPY .pre-commit-config.yaml .pre-commit-config.yaml
+
 USER root
 WORKDIR /root/dev
 VOLUME ["/root/dev"]
