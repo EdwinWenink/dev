@@ -81,5 +81,4 @@ VOLUME ["/root/dev"]
 
 EXPOSE 5173
 
-# ENTRYPOINT /bin/sh
 CMD ["zsh"]
