@@ -19,7 +19,8 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -y \
     less \
     ca-certificates \
     zip \
-    unzip
+    unzip \
+    htop
 
 # Personalized installs: Python 3.11 with deps for PostgresQL
 # Editor: Zsh + Tmux + Vim
@@ -79,6 +80,6 @@ USER root
 WORKDIR /root/dev
 VOLUME ["/root/dev"]
 
-EXPOSE 5173
+EXPOSE 8000
 
 CMD ["zsh"]
