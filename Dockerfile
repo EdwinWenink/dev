@@ -35,7 +35,8 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -y \
     python-is-python3 \
     tmux \
     zsh \
-    libpq-dev
+    libpq-dev \
+    ripgrep
 
 # Set locale
 ENV LC_ALL en_US.UTF-8
