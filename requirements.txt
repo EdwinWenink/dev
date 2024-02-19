@@ -4,3 +4,4 @@ mypy
 python-lsp-server
 ruff
 autoimport
+pylint
