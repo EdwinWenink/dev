@@ -1,8 +1,6 @@
 # Dev Container
 
-## Usage
-
-### Regular docker commands
+## Build and run
 
 Manually:
 
@@ -24,7 +22,15 @@ Add a port mapping e.g. `-p 80:8000` to expose the container port `8000` on `loc
 **TIP**: when running a server within the Docker container, specify host `0.0.0.0` because `localhost`/`127.0.0.1` within Docker refers to the network *within* Docker and is not exposed outward.
 See [this](https://stackoverflow.com/questions/75040507/how-to-access-fastapi-backend-from-a-different-machine-ip-on-the-same-local-netw/75041731#75041731) SO post.
 
+Complete command:
+
+`docker run -it --env-file .env -v .:/root/dev/ -p 3000:3000 devcontainer:latest`
+
+**NOTE**: the relative path `.` in the volume mount does not work on all PCs. Why does it work on my desktop but not on my laptop?
+
 ### Docker compose
+
+**TODO**: outdated, need to add port forwarding to the compose setup.
 
 Using Docker compose (without bind mount):
 
