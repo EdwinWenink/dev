@@ -9,6 +9,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -y \
     locales \
     locales-all \
     gnupg \
+    software-properties-common \
     build-essential \
     curl \
     wget \
@@ -66,6 +67,14 @@ RUN vim +PlugInstall +qall
 # Install Python requirements with pip
 COPY requirements.txt ./
 RUN pip3 install --no-cache-dir -r requirements.txt
+
+# Install Terraform
+RUN wget -O- https://apt.releases.hashicorp.com/gpg | gpg --dearmor | sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg
+
+RUN gpg --no-default-keyring --keyring /usr/share/keyrings/hashicorp-archive-keyring.gpg --fingerprint
+RUN echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
+RUN apt-get update -y
+RUN apt-get install terraform
 
 # Install Terraform linter
 RUN curl -s https://raw.githubusercontent.com/terraform-linters/tflint/master/install_linux.sh | bash
