@@ -1,5 +1,21 @@
 # Dev Container
 
+## Configuring Docker
+
+By default Docker hijacks the Ctrl-p binding, which is used in Vim as an alternative for the up arrow in menu navigation.
+I also use it for fuzzy finding using the Ctrl-p plugin.
+
+In Docker, Ctrl-p Ctrl-q detaches from an interactive session, such as when started with `docker start -i` or `docker attach`.
+This causes annoying behavior, e.g. when using the Ctrl-P Vim plugin you need to press Ctrl-p twice to enter the search menu, and when the menu opens it has the previous search command pre-selected (because Ctrl-p is also the "go to previous" navigation action).
+
+To prevent this, set the following in `~/.docker/config.json`:
+
+```
+{
+    "detachKeys": "ctrl-z,z"
+}
+```
+
 ## Build and run
 
 Manually:
